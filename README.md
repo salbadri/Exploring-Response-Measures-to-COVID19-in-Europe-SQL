@@ -21,7 +21,7 @@ Both Datasets were retrieved from the [European Center for Disease Prevention an
 
 * The responseToCOVID19 table has information about response measures for 30 European countries. This dataset has  4 features and 2060 entries. Features: country, Response_Measure, date_start, date_end. Dictionary to Response measures
 
-* COVID19Cases table COVID19Cases dataset has information about COVID19 cases and deaths for 228 countries. This dataset consists of 11 features and 53074 entries. Variables: country, country_code, continent, population, indicator (cases or deaths), weekly_count, year_week, rate_14_day, cumulative_count, source, and note. We only used country, indicator, weekly_count, year_week, and cumulative_count. 
+* COVID19Cases table has information about COVID19 cases and deaths for 228 countries. This dataset consists of 11 features and 53074 entries. Variables: country, country_code, continent, population, indicator (cases or deaths), weekly_count, year_week, rate_14_day, cumulative_count, source, and note. We only used country, indicator, weekly_count, year_week, and cumulative_count. 
 
 ## Creating a new table by Joining responseToCOVID19 table and COVID19Cases table:
 
@@ -29,17 +29,17 @@ Both Datasets were retrieved from the [European Center for Disease Prevention an
 
 ## Observations:
 
-We explored our newly created table MeasuresAndCOVID19CasesEurope. 
+I explored our newly created table MeasuresAndCOVID19CasesEurope. 
 * I checked what are the most common response measures? And what response measures to COVID19 were adapted for more than 90 days? 
 * What measures are used each year? What is the frequency of each response measure for each year? 
 * How many countries adapted stay at home order (lockdown)? which countries did not adapt lockdown? 
 
-* Then I explored COVID19 Cases and COVID19 Deaths regardless of what response measures were adapted (see the table below)
+* I explored COVID19 Cases and COVID19 Deaths regardless of what response measures were adapted (see the table below)
 
 ![github-small](https://github.com/salbadri/Exploring-Response-Measures-to-COVID19-in-Europe-SQL/blob/main/images/Table1.png). 
 
 
-* Then I divided up the table of COVID19 and Response measures into three categories based on response measures: StrictMeasuresAndCOVID19 (Strict response Measures), RelaxedMeasuresAndCOVID19 (Relaxed response measures), and Partial_InBtwMeasuresAndCOVID19 (response measures that lie in btw strict and relaxed response measure).  We expected to have a lower count of cases and deaths under Strict response measures in comparison to Partial_InBtwMeasuresAndCOVID19 and Relaxed response measures. We expected to have a lower count of cases and deaths under  Partial_InBtwMeasuresAndCOVID19 comparing to Relaxed response measures. 
+* Lastly, I divided up the table of COVID19 and Response measures into three tables based on response measures: StrictMeasuresAndCOVID19 (Strict response Measures), RelaxedMeasuresAndCOVID19 (Relaxed response measures), and Partial_InBtwMeasuresAndCOVID19 (response measures that lie in btw strict and relaxed response measure).  We expected to have a lower weekly count and cumulative count of COVID19 cases and COVID19 deaths under Strict response measures in comparison to Partial_InBtwMeasuresAndCOVID19 and Relaxed response measures. We expected to have a lower weekly count and cumulative count of COVID19 cases and COVID19deaths under  Partial_InBtwMeasuresAndCOVID19 comparing to Relaxed response measures. 
 See table below
 ![github-small]( https://github.com/salbadri/Exploring-Response-Measures-to-COVID19-in-Europe-SQL/blob/main/images/Table2.png)
 
@@ -48,7 +48,7 @@ See table below
 Although Deaths and cases are lower under Strict response measures compared to Deaths and cases under Partial_In_between response measures and Relaxed response measures. But, We cannot conclude that the stricter the response measures, the lower the COVID19 deaths and cases. Other factors that must be considered such as the population count of each country, testing procedures each country adapted, Age, and Mortality (are deaths linked directly to COVID19?). 
 
 
-Limitations: We must consider other factors such as the population count of each country, testing procedures each country adapted, Age, and Mortality (are deaths linked directly to COVID19?). 
+Limitations: We should consider other factors such as the population of each country, testing procedures each country adapted, Age, and Mortality (are deaths linked directly to COVID19?). 
 
 
 ## Needs of this project
@@ -58,9 +58,9 @@ Limitations: We must consider other factors such as the population count of each
 
 ## Issues:
 
-I had problem importing my datasets to the Database - whenever I try, not all dataset gets imported. I tried [different methods](https://bugs.mysql.com/bug.php?id=97813) suggested by MySQL to fix the problem, but non worked
+I had problem importing my datasets to the Database - MYSQL failed to import the whole set of data. I tried [different methods](https://bugs.mysql.com/bug.php?id=97813) suggested by MySQL to fix the problem, but non worked
 
-Solution: I ended up importing the datasets as follow:
+My Solution: I ended up importing the datasets as follow:
 1)	I created a database on DB browser for SQLite and uploaded my datasets to the database.
 2)	I exported the Database as SQL query.
 3)	Using Visual Studio Code, I edited the code; made the necessary changes since there are differences in the syntaxes btw SQLite and MySQL.
