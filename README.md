@@ -14,14 +14,14 @@ The purpose of this project is to examine the correlation between response measu
 * SQLite (Version 3.34.1)
 
 ## Project Description
-I created a database (schema) and imported datasets of interest to the database: COVID19Cases which can be found [here](https://www.ecdc.europa.eu/en/publications-data/download-historical-data-20-june-2022-weekly-number-new-reported-covid-19-cases), and responseToCOVID19 which can be found [here](https://www.ecdc.europa.eu/en/publications-data/download-data-response-measures-covid-19). 
+I created a database (schema) and imported datasets (tables) of interest which are COVID19Cases which can be found [here](https://www.ecdc.europa.eu/en/publications-data/download-historical-data-20-june-2022-weekly-number-new-reported-covid-19-cases), and responseToCOVID19 which can be found [here](https://www.ecdc.europa.eu/en/publications-data/download-data-response-measures-covid-19). 
 
 [COVID19Cases table]( https://www.ecdc.europa.eu/en/publications-data/download-historical-data-20-june-2022-weekly-number-new-reported-covid-19-cases)
 Both Datasets were retrieved from the [European Center for Disease Prevention and Control]( https://www.ecdc.europa.eu/en).
 
-* The responseToCOVID19 table has information about response measures for 30 European countries. This dataset has  4 features and 2060 entries. Features: country, Response_Measure, date_start, date_end. Dictionary to Response measures
+* The responseToCOVID19 table has information about response measures for 30 European countries. This dataset has  4 features and 2060 entries. Features: country, Response_Measure, date_start, date_end. [Dictionary to Response measures](https://github.com/salbadri/Exploring-Response-Measures-to-COVID19-in-Europe-SQL/blob/main/Dictionary%20to%20Response%20Measures.docx)
 
-* COVID19Cases table has information about COVID19 cases and deaths for 228 countries. This dataset consists of 11 features and 53074 entries. Variables: country, country_code, continent, population, indicator (cases or deaths), weekly_count, year_week, rate_14_day, cumulative_count, source, and note. We only used country, indicator, weekly_count, year_week, and cumulative_count. 
+* COVID19Cases table has information about COVID19 cases and deaths for 228 countries. This dataset consists of 11 features and 53074 entries. Features: country, country_code, continent, population, indicator (cases or deaths), weekly_count, year_week, rate_14_day, cumulative_count, source, and note. I only used country, indicator, weekly_count, year_week, and cumulative_count. 
 
 ## Creating a new table by Joining responseToCOVID19 table and COVID19Cases table:
 
@@ -39,13 +39,13 @@ I explored our newly created table MeasuresAndCOVID19CasesEurope.
 ![github-small](https://github.com/salbadri/Exploring-Response-Measures-to-COVID19-in-Europe-SQL/blob/main/images/Table1.png). 
 
 
-* Lastly, I divided up the table of COVID19 and Response measures into three tables based on response measures: StrictMeasuresAndCOVID19 (Strict response Measures), RelaxedMeasuresAndCOVID19 (Relaxed response measures), and Partial_InBtwMeasuresAndCOVID19 (response measures that lie in btw strict and relaxed response measure).  We expected to have a lower weekly count and cumulative count of COVID19 cases and COVID19 deaths under Strict response measures in comparison to Partial_InBtwMeasuresAndCOVID19 and Relaxed response measures. We expected to have a lower weekly count and cumulative count of COVID19 cases and COVID19deaths under  Partial_InBtwMeasuresAndCOVID19 comparing to Relaxed response measures. 
+* Lastly, I divided up the table of COVID19 and Response measures (MeasuresAndCOVID19CasesEurope) into three tables based on response measures: StrictMeasuresAndCOVID19 (Strict response Measures), RelaxedMeasuresAndCOVID19 (Relaxed response measures), and Partial_InBtwMeasuresAndCOVID19 (response measures that lie in btw strict and relaxed response measure).  We expected to have a lower weekly count and cumulative count of COVID19 cases and COVID19 deaths under Strict response measures in comparison to Partial_InBtwMeasuresAndCOVID19 and Relaxed response measures. We expected to have a lower weekly count and cumulative count of COVID19 cases and COVID19deaths under  Partial_InBtwMeasuresAndCOVID19 comparing to Relaxed response measures. 
 See table below
 ![github-small]( https://github.com/salbadri/Exploring-Response-Measures-to-COVID19-in-Europe-SQL/blob/main/images/Table2.png)
 
 ## Conclusion: 
 
-Although Deaths and cases are lower under Strict response measures compared to Deaths and cases under Partial_In_between response measures and Relaxed response measures. But, We cannot conclude that the stricter the response measures, the lower the COVID19 deaths and cases. Other factors that must be considered such as the population count of each country, testing procedures each country adapted, Age, and Mortality (are deaths linked directly to COVID19?). 
+Although Deaths and cases are lower under Strict response measures compared to Deaths and cases under Partial_In_between response measures and Relaxed response measures. However, We cannot conclude that the stricter the response measures, the lower the COVID19 deaths and cases; other factors such as the population count of each country, testing procedures each country adopted, Age, and Mortality (are deaths linked directly to COVID19?) must be taken into consideration. 
 
 
 Limitations: We should consider other factors such as the population of each country, testing procedures each country adapted, Age, and Mortality (are deaths linked directly to COVID19?). 
